@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VideoMind - AI YouTube Intelligence</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="style.css?v=5.0">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body class="dark-theme">
+    <div class="background-glow"></div>
+    
+    <nav class="glass-effect">
+        <div class="logo">
+            <span class="logo-icon"><i class="fas fa-brain gradient-text"></i></span>
+            <span class="logo-text">VideoMind</span>
+        </div>
+        <div class="nav-right">
+            <div class="language-picker" id="langSwitcher">
+                <button class="lang-btn active" data-lang="English">EN</button>
+                <button class="lang-btn" data-lang="Hindi">हिं</button>
+            </div>
+            <div class="nav-links">
+                <a href="#" class="active" id="navDashboard" data-translate="navDashboard">Dashboard</a>
+                <a href="#" id="navHistory" data-translate="navHistory">History</a>
+                <a href="#" id="navSettings" data-translate="navSettings">Settings</a>
+                <a href="#" id="navDeveloper" data-translate="navDeveloper">Developer</a>
+            </div>
+        </div>
+    </nav>
+
+    <main id="mainContent">
+        <!-- Dashboard View -->
+        <div id="dashboardView" class="view active-view">
+            <section class="hero animate-in">
+                <h1 id="heroTitle">Transcribe. Analyze. <span class="gradient-text">Master.</span></h1>
+                <p id="heroSub">Unlock summaries, insights, and chat-based reasoning for any YouTube video.</p>
+                
+                <div class="input-container glass-effect">
+                    <input type="text" id="videoUrl" placeholder="Paste YouTube URL here...">
+                    <button id="analyzeBtn" data-translate="analyzeBtn">Analyze Video</button>
+                </div>
+            </section>
+
+            <section id="resultsSection" class="hidden">
+                <div class="dashboard-grid">
+                    <div class="card glass-card animate-in">
+                        <h3><i class="fas fa-file-invoice"></i> <span data-translate="summaryTitle">Intelligence Summary</span></h3>
+                        <div id="summaryContent" class="markdown-body"></div>
+                    </div>
+
+                    <div class="card glass-card animate-in">
+                        <h3><i class="fas fa-comments"></i> <span data-translate="chatTitle">Chat with Video</span></h3>
+                        <div id="chatBox" class="chat-display">
+                            <div class="message ai" data-translate="welcomeChat">How can I help you understand this video today?</div>
+                        </div>
+                        <div id="typingIndicator" class="typing hidden"><span></span><span></span><span></span></div>
+                        <div class="chat-input-area">
+                            <input type="text" id="chatInput" placeholder="Ask anything about the video...">
+                            <button id="sendChatBtn"><i class="fas fa-paper-plane"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- History View -->
+        <div id="historyView" class="view hidden">
+            <div class="section-header-centered animate-in">
+                <span class="sub-title" data-translate="historySub">Archive</span>
+                <h2 class="section-title" data-translate="historyTitle">Your Analysis History</h2>
+            </div>
+            <div id="historyList" class="history-grid animate-in"></div>
+        </div>
+
+        <!-- Settings View -->
+        <div id="settingsView" class="view hidden">
+            <div class="section-header-centered animate-in">
+                <span class="sub-title" data-translate="settingsSub">Preferences</span>
+                <h2 class="section-title" data-translate="settingsTitle">App Settings</h2>
+            </div>
+            <div class="settings-container animate-in">
+                <div class="settings-card glass-card">
+                    <div class="setting-row">
+                        <div class="setting-info">
+                            <h4 data-translate="setLang">Default AI Language</h4>
+                            <p data-translate="setLangSub">Language for summaries and chat responses.</p>
+                        </div>
+                        <select id="prefLanguage">
+                            <option value="English">English</option>
+                            <option value="Hindi">हिंदी (Hindi)</option>
+                        </select>
+                    </div>
+                    <div class="setting-row">
+                        <div class="setting-info">
+                            <h4 data-translate="setLength">Response Detail</h4>
+                            <p data-translate="setLengthSub">How deep should the AI analysis go?</p>
+                        </div>
+                        <select id="prefLength">
+                            <option value="Short">Short</option>
+                            <option value="Medium" selected>Medium</option>
+                            <option value="Detailed">Detailed</option>
+                        </select>
+                    </div>
+                    <div class="setting-row">
+                        <div class="setting-info">
+                            <h4 data-translate="setHistory">Manage History</h4>
+                            <p data-translate="setHistorySub">Permanently delete all saved analysis data.</p>
+                        </div>
+                        <button id="clearHistoryBtn" class="danger-btn" data-translate="clearBtn">Clear All History</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Developer View -->
+        <div id="developerView" class="view hidden">
+            <div class="portfolio-wrapper">
+                <!-- SECTION 1: HERO -->
+                <section class="p-hero animate-in">
+                    <div class="p-avatar-container">
+                        <div class="p-avatar-glow"></div>
+                        <img src="/photo/profile.jpg" alt="Bittu Sharma" class="p-avatar-img">
+                        <div class="p-badge"><i class="fas fa-star"></i> AI Pioneer</div>
+                    </div>
+                    <div class="p-hero-content">
+                        <h1 class="p-name">Bittu <span class="gradient-text">Sharma</span></h1>
+                        <h2 class="p-title">AI Engineer & LLMOps Architect</h2>
+                        <p class="p-tagline">"Architecting the future of Generative AI and Automated Intelligence."</p>
+                        <div class="p-social-row">
+                            <a href="https://www.linkedin.com/in/bittu-kumar-54ab13254/" target="_blank" class="p-social-btn glass-effect"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                            <a href="https://github.com/" target="_blank" class="p-social-btn glass-effect"><i class="fab fa-github"></i> GitHub</a>
+                            <a href="https://bittublog.hashnode.dev/" target="_blank" class="p-social-btn glass-effect"><i class="fas fa-globe"></i> Portfolio</a>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- SECTION 2: ABOUT -->
+                <section class="p-section animate-in">
+                    <div class="p-about-card glass-card">
+                        <span class="p-sub-title">Vision</span>
+                        <h3>About Me</h3>
+                        <p>Professional AI engineer focused on Generative AI, LLMOps, RAG systems, intelligent automation, and scalable AI infrastructure. My work revolves around building robust architectures that turn massive data into actionable human-centric intelligence.</p>
+                    </div>
+                </section>
+
+                <!-- SECTION 3: STACK -->
+                <section class="p-section animate-in">
+                    <div class="section-header-centered">
+                        <span class="p-sub-title">Expertise</span>
+                        <h2 class="section-title">Core Technical Stack</h2>
+                    </div>
+                    <div class="p-stack-grid">
+                        <div class="p-stack-card glass-card">
+                            <div class="p-stack-icon"><i class="fas fa-magic"></i></div>
+                            <div class="p-stack-info">
+                                <h4>Generative AI</h4>
+                                <p>LLM Agents & Fine-tuning</p>
+                            </div>
+                        </div>
+                        <div class="p-stack-card glass-card">
+                            <div class="p-stack-icon"><i class="fas fa-project-diagram"></i></div>
+                            <div class="p-stack-info">
+                                <h4>LangChain</h4>
+                                <p>RAG & Conversational Flows</p>
+                            </div>
+                        </div>
+                        <div class="p-stack-card glass-card">
+                            <div class="p-stack-icon"><i class="fas fa-infinity"></i></div>
+                            <div class="p-stack-info">
+                                <h4>LLMOps</h4>
+                                <p>Model Serving & Monitoring</p>
+                            </div>
+                        </div>
+                        <div class="p-stack-card glass-card">
+                            <div class="p-stack-icon"><i class="fas fa-cubes"></i></div>
+                            <div class="p-stack-info">
+                                <h4>DevOps</h4>
+                                <p>Kubernetes & Docker</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- SECTION 4: PROJECTS -->
+                <section class="p-section animate-in">
+                    <div class="section-header-centered">
+                        <span class="p-sub-title">Vault</span>
+                        <h2 class="section-title">Featured Projects</h2>
+                    </div>
+                    <div class="p-project-grid">
+                        <div class="p-project-card glass-card">
+                            <div class="p-project-icon"><i class="fas fa-video"></i></div>
+                            <div class="p-project-body">
+                                <div class="p-project-tags"><span>AI</span><span>YouTube</span></div>
+                                <h4>VideoMind</h4>
+                                <p>AI-powered YouTube intelligence system with transcript grounded conversational AI and multilingual support.</p>
+                                <a href="#" class="p-project-btn">View Project <i class="fas fa-arrow-up-right-from-square"></i></a>
+                            </div>
+                        </div>
+                        <div class="p-project-card glass-card">
+                            <div class="p-project-icon"><i class="fas fa-file-pdf"></i></div>
+                            <div class="p-project-body">
+                                <div class="p-project-tags"><span>RAG</span><span>Research</span></div>
+                                <h4>Aristotle Pro</h4>
+                                <p>Advanced research assistant for processing massive document clusters with semantic retrieval.</p>
+                                <a href="#" class="p-project-btn">View Project <i class="fas fa-arrow-up-right-from-square"></i></a>
+                            </div>
+                        </div>
+                        <div class="p-project-card glass-card">
+                            <div class="p-project-icon"><i class="fas fa-database"></i></div>
+                            <div class="p-project-body">
+                                <div class="p-project-tags"><span>MLOps</span><span>Cloud</span></div>
+                                <h4>Nexus Hub</h4>
+                                <p>Centralized model management system for enterprise-grade LLM deployments and monitoring.</p>
+                                <a href="#" class="p-project-btn">View Project <i class="fas fa-arrow-up-right-from-square"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- SECTION 5: CONTACT -->
+                <section class="p-section p-cta-section animate-in">
+                    <div class="p-cta-glow"></div>
+                    <div class="p-cta-content">
+                        <h2>Let's Build the Future Together</h2>
+                        <p>AI • LLMOps • Automation • Innovation</p>
+                        <div class="p-cta-btns">
+                            <a href="mailto:bittu@example.com" class="p-cta-main-btn">Get In Touch</a>
+                            <div class="p-cta-socials">
+                                <a href="#"><i class="fab fa-linkedin"></i></a>
+                                <a href="#"><i class="fab fa-github"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <div id="globalLoader" class="loader-overlay hidden">
+        <div class="spinner"></div>
+        <p id="loaderText">Analyzing Intelligence...</p>
+    </div>
+
+    <script src="app.js?v=5.2"></script>
+</body>
+</html>

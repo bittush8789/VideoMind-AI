@@ -1,0 +1,16 @@
+fastapi
+uvicorn
+langchain
+langchain-groq
+langchain-community
+chromadb
+sentence-transformers
+youtube-transcript-api
+pydantic
+python-dotenv
+tiktoken
+langchain-text-splitters
+protobuf==6.31.1
+tf-keras
+yt-dlp
+requests
