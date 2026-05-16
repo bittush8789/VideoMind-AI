@@ -177,6 +177,20 @@ VideoMind/
 
 ---
 
+## 🐳 Deployment via Docker
+
+1. **Build the Image**
+   ```bash
+   docker build -t videomind-ai .
+   ```
+
+2. **Run the Container**
+   ```bash
+   docker run -p 8000:8000 --env-file .env videomind-ai
+   ```
+
+---
+
 ## 👤 Author
 **Bittu Sharma**
 *AI Engineer & LLMOps Architect*
