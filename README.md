@@ -209,4 +209,4 @@ VideoMind/
 ## 📜 License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-<p align="center">Built with ❤️ for the Future of AI Intelligence</p>
+
