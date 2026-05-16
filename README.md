@@ -144,15 +144,17 @@ VideoMind/
 
 1. **Clone the Repository**
    ```bash
-   git clone https://github.com/yourusername/videomind.git
-   cd videomind
+   git clone https://github.com/bittush8789/VideoMind-AI.git
+   cd VideoMind-AI
    ```
 
-2. **Environment Configuration**
-   Create a `.env` file in the root:
-   ```env
-   GROQ_API_KEY=your_api_key_here
-   MODEL_NAME=llama-3.3-70b-versatile
+2. **Create Virtual Environment**
+   ```bash
+   python -m venv venv
+   # Activate on Windows:
+   venv\Scripts\activate
+   # Activate on Mac/Linux:
+   source venv/bin/activate
    ```
 
 3. **Install Dependencies**
@@ -160,7 +162,14 @@ VideoMind/
    pip install -r requirements.txt
    ```
 
-4. **Run the Platform**
+4. **Environment Configuration**
+   Create a `.env` file in the root directory:
+   ```env
+   GROQ_API_KEY=your_groq_api_key_here
+   MODEL_NAME=llama-3.3-70b-versatile
+   ```
+
+5. **Run the Application**
    ```bash
    uvicorn backend.main:app --reload
    ```
